@@ -1,0 +1,100 @@
+<head xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <title>Laba 2. Angular JS frontend</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="css/angular-material.min.css" rel="stylesheet"/>
+    <link href="css/loading-bar.min.css" rel="stylesheet"/>
+
+    <script src="js/bootstrap.js" type="application/javascript"></script>
+    <script src="js/angular.min.js" type="application/javascript"></script>
+    <script src="js/angular-route.min.js" type="application/javascript"></script>
+    <script src="js/loading-bar.min.js" type="application/javascript"></script>
+    <style type="text/css">
+        #first-div {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="root" class="container-fluid" ng-app="angularLab2Application" ng-controller="angularLab2Ctrl">
+    <div id="first-div" class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <h1>Лаба 2. Angular JS<br/>Погода в городах мира.</h1><br/>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="city-input">Город (на англ.) </label>
+                    <input type="text" class="form-control" id="city-input" placeholder="Moscow" ng-model="searchQuery">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="search()">Найти</button>
+            </form>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <div ng-show="weatherData" class="pull-right" style="margin-top: 20px;">
+                <img ng-src="http://www.geonames.org/flags/x/{{weatherData.sys.country | lowercase}}.gif" alt="..."
+                     class="img-circle" width="40px" height="40">
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <h1>{{weatherData.name}}</h1></div>
+        <div class="col-xs-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="pull-right">
+                <img
+                        ng-src="http://openweathermap.org/img/w/{{weatherData.weather[0].icon}}.png">
+            </div>
+        </div>
+        <div class="col-xs-8" ng-show="weatherData">
+            <div class="row">
+                <div class="col-sm-2"><h3>Температура</h3></div>
+                <div class="col-sm-9"><h3>{{weatherData.main.temp}} C</h3></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"><h3>Давление</h3></div>
+                <div class="col-sm-9"><h3>{{weatherData.main.pressure * 0.75}} мм.рт.ст. </h3></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"><h3>Влажность</h3></div>
+                <div class="col-sm-9"><h3>{{weatherData.main.humidity}} %</h3></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"><h3>Видимость</h3></div>
+                <div class="col-sm-9"><h3>{{weatherData.visibility}} м</h3></div>
+            </div>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+
+
+    <div class="modal" id="errorMessageAlert">
+        <div class="modal-dialog modal-sm" role="alert">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="alert-status" class="modal-title"></h5>
+                </div>
+                <div class="modal-body">
+                    <div id="alert-message" class="alert alert-danger" role="alert">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok, got it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/application.js" type="application/javascript"></script>
+</body>

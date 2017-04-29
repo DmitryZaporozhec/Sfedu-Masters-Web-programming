@@ -1,0 +1,6 @@
+{
+  "host": "localhost",
+  "user": "root",
+  "password": "passwd00",
+  "database": "nodeapp"
+}

@@ -1,0 +1,74 @@
+<head xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <title>Laba 2. Vue JS frontend</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="css/materialize.min.css" rel="stylesheet"/>
+    <script src="js/materialize.min.js" type="application/javascript"></script>
+    <script src="js/vue.js" type="application/javascript"></script>
+    <script src="js/vue-resource.min.js" type="application/javascript"></script>
+
+    <style>
+        .modal {
+            width: 25% !important
+        }
+    </style>
+</head>
+<body>
+<div id='app' class="row">
+    <table class="striped bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Company</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user in users" entityId="{{user.id}}">
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.website}}</td>
+            <td><a class="waves-effect waves-light btn" href="#company-modal" v-on:click="showCompany(user)">View</a>
+            </td>
+            <td><a class="waves-effect waves-light btn" href="#address-modal" v-on:click="showAddress(user)">View</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div id="company-modal" class="modal">
+        <div class="modal-content">
+            <h4 v-if="currentCompany">{{currentCompany.name}}</h4>
+            <p v-if="currentCompany">{{currentCompany.catchPhrase}}</p>
+            <p v-if="currentCompany">{{currentCompany.bs}}</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+    <div id="address-modal" class="modal">
+        <div class="modal-content">
+            <h4 v-if="currentAddress">{{currentAddress.city}}</h4>
+            <p v-if="currentAddress">Street: {{currentAddress.street}}</p>
+            <p v-if="currentAddress">Suite: {{currentAddress.suite}}</p>
+            <p v-if="currentAddress">Zip Code: {{currentAddress.zipcode}}</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+</script>
+<script src="js/application.js" type="application/javascript"></script>
+</body>
