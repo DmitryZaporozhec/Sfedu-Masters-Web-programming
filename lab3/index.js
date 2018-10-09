@@ -92,7 +92,9 @@ app.delete('/sessions', function (req, res) {
 });
 
 var encryptPassword = function (password, salt) {
-    return crypto.createHmac('sha1', "changeIt").update(password).digest('hex');
+    var pass = crypto.createHmac('sha1', "changeIt").update(password).digest('hex');
+    console.log(pass+":"+password);
+    return pass;
 }
 
 process.on('uncaughtException', function (ex) {

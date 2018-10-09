@@ -5,7 +5,8 @@ var connection = mysql.createConnection({
     host     : config.host,
     user     : config.user,
     password : config.password,
-    database : config.database
+    database : config.database,
+    port: "3306"
 });
 
 var getData=function(sql, callback){

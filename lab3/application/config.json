@@ -1,6 +1,6 @@
 {
-  "host": "localhost",
-  "user": "root",
-  "password": "passwd00",
+  "host": "127.0.0.1",
+  "user": "idmuser",
+  "password": "idmuser",
   "database": "nodeapp"
 }
